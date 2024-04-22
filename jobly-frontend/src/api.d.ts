@@ -4,8 +4,8 @@ declare module "@/api" {
   class JoblyApi {
     static token: string;
 
-    static getCompanies(): Company[];
-    static getCompany(handle: string): Company | Error;
+    static async getCompanies(): Promise<Company[]>;
+    static async getCompany(handle: string): Promise<Company | Error>;
   }
 
   interface Error {
