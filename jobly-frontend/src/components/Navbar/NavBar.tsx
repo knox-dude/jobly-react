@@ -37,11 +37,6 @@ function NavBar() {
               <NavLink href="/companies/">Companies</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/companies/apple">
-                Apple Company
-              </NavLink>
-            </NavItem>
-            <NavItem>
               <NavLink href="/jobs">
                 Jobs
               </NavLink>
