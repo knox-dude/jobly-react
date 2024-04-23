@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { JoblyApi } from "@/api";
 import { Company } from "@/types";
-import CompanyCard from "../CompanyCard/CompanyCard";
+import CompanyCard from "@/components/CompanyCard/CompanyCard";
+import SearchBox from "@/components/SearchBox/SearchBox";
 
 function CompanyList() {
   const [companies, setCompanies] = useState<Company[]>([]);
@@ -18,6 +19,15 @@ function CompanyList() {
     fetchCompanies();
   }, []);
 
+  const handleSearch = async (searchText: string) => {
+    try {
+      const response = await JoblyApi.searchCompanies(searchText);
+      setCompanies(response);
+    } catch (error) {
+      console.error("Error searching companies:", error);
+    }
+  };
+
   const renderCompanies = () => {
     return companies.map((company) => {
       return (
@@ -28,6 +38,7 @@ function CompanyList() {
 
   return (
     <div className="company-list container pt-1">
+      <SearchBox handleSearch={handleSearch} />
       {renderCompanies()}
     </div>
   )
