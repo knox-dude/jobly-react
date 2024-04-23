@@ -7,6 +7,7 @@ import SearchBox from "@/components/SearchBox/SearchBox";
 function CompanyList() {
   const [companies, setCompanies] = useState<Company[]>([]);
 
+  // get a list of all companies on page load
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
@@ -19,16 +20,26 @@ function CompanyList() {
     fetchCompanies();
   }, []);
 
+  // handle when user searches for a company
   const handleSearch = async (searchText: string) => {
     try {
-      const response = await JoblyApi.searchCompanies(searchText);
+      let response;
+      if (searchText === "") {
+        response = await JoblyApi.getCompanies();
+      } else {
+        response = await JoblyApi.searchCompanies(searchText);
+      }
       setCompanies(response);
     } catch (error) {
       console.error("Error searching companies:", error);
     }
   };
 
+  // renders companies or message when there are no companies
   const renderCompanies = () => {
+    if (companies.length === 0) {
+      return <h4 className="text-center pt-4">Couldn't find any companies</h4>
+    }
     return companies.map((company) => {
       return (
         <CompanyCard key={company.handle} {...company}></CompanyCard>

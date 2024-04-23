@@ -1,5 +1,5 @@
 import { useState, ChangeEvent } from 'react';
-import { Input, Button } from 'reactstrap';
+import { Input } from 'reactstrap';
 
 interface SearchBoxProps {
   handleSearch: (searchText: string) => void;
@@ -10,20 +10,20 @@ function SearchBox({handleSearch}: SearchBoxProps) {
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchText(event.target.value);
+    handleSearch(event.target.value);
   };
 
   return (
-    <div style={{ display: 'inline-flex' }}>
-      <Input
-        type="text"
-        placeholder="Enter Search Term"
-        value={searchText}
-        onChange={handleInputChange}
-        style={{ cursor: 'pointer' }}
-      />
-      <Button color="primary" onClick={() => handleSearch(searchText)} style={{ cursor: 'pointer' }}>
-        Search
-      </Button>
+    <div className='d-flex align-items-center justify-content-center pt-2'>
+      <div className='d-flex align-items-center w-50 justify-content-center'>
+        <Input
+          type="text"
+          placeholder="Enter Search Term"
+          value={searchText}
+          onChange={handleInputChange}
+          style={{ cursor: 'text' }}
+        />
+      </div>
     </div>
   );
 }
