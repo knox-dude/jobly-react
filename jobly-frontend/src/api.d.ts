@@ -5,11 +5,6 @@ declare module "@/api" {
     static token: string;
 
     static async getCompanies(): Promise<Company[]>;
-    static async getCompany(handle: string): Promise<Company | Error>;
-  }
-
-  interface Error {
-    message: string;
-    status: number;
+    static async getCompany(handle: string): Promise<Company>;
   }
 }
