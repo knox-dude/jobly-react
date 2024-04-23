@@ -3,11 +3,10 @@ import { Job } from "@/types";
 
 function JobCard({title, salary, equity}: Job) {
   return (
-    <Card className="job-card flex-row">
+    <Card className="job-card flex-row m-2">
       <CardBody className="job-card-body">
         <CardTitle tag="h6">{title}</CardTitle>
-        <CardText>Salary: {salary}</CardText>
-        <CardText>Equity: {equity}</CardText>
+        <CardText>Salary: {salary}<br></br>Equity: {equity}</CardText>
       </CardBody>
     </Card>
   );

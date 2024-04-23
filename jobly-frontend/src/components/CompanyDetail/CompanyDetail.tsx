@@ -41,10 +41,10 @@ function CompanyDetail() {
   }
 
   return (
-    <div className="company-detail container">
-      <h1>{company?.name}</h1>
-      <p>{company?.description}</p>
-      <p>Employees: {company?.numEmployees}</p>
+    <div className="company-detail container p-2 top-2">
+      <h1 className="company-detail-header text-center mt-2">{company?.name}</h1>
+      <h5 className="company-detail-description text-muted text-center m-2">{company?.description}</h5>
+      <p className="company-detail-employees text-muted text-center">{company?.numEmployees} Employees</p>
       {renderJobs()}
     </div>
   )
