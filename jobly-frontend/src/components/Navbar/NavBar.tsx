@@ -12,6 +12,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 function NavBar() {
   const args = {
@@ -34,25 +35,25 @@ function NavBar() {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
-              <NavLink href="/companies/">Companies</NavLink>
+              <NavLink tag={Link} to="/companies/">Companies</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/jobs">
+              <NavLink tag={Link} to="/jobs">
                 Jobs
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/login">
+              <NavLink tag={Link} to="/login">
                 Login
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/signup">
+              <NavLink tag={Link} to="/signup">
                 Signup
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/profile">
+              <NavLink tag={Link} to="/profile">
                 Profile
               </NavLink>
             </NavItem>
