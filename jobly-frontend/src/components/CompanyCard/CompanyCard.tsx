@@ -1,4 +1,4 @@
-import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from "reactstrap"
+import { Card, CardBody, CardTitle, CardSubtitle, CardText } from "reactstrap"
 import { Company } from "@/types";
 import { useNavigate } from "react-router-dom";
 
@@ -9,14 +9,20 @@ function CompanyCard({handle, name, description, numEmployees, logoUrl}: Company
 
   return (
     <Card onClick={() => navigate(`/companies/${handle}`)} style={{cursor:"pointer"}} className="company-card flex-row" >
-      <CardBody className="w-75">
-        <CardTitle tag="h5">{name}</CardTitle>
-        <CardSubtitle className="mb-2 text-muted " tag="h6">{description}</CardSubtitle>
-        <CardText>Employees: {numEmployees}</CardText>
-        <Button href={`/companies/${handle}`}>View</Button>
+      <CardBody className="col-10">
+        <div className="h-100 d-flex flex-column justify-content-between">
+          <div>
+            <CardTitle tag="h5">{name}</CardTitle>
+            <CardSubtitle className="mb-2 text-muted" tag="h6">{description}</CardSubtitle>
+          </div>
+          <CardText>Employees: {numEmployees}</CardText>
+        </div>
+
       </CardBody>
 
-      <img className="w-25 img-fluid" src={logoUrl} alt={name} />
+      <div className="container col-2 p-2">
+        <img className="img-fluid" src={logoUrl} alt={name} />
+      </div>
     </Card>
   )
 }
