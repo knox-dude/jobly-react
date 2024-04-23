@@ -8,7 +8,7 @@ function CompanyCard({handle, name, description, numEmployees, logoUrl}: Company
   const navigate = useNavigate();
 
   return (
-    <Card onClick={() => navigate(`/companies/${handle}`)} style={{cursor:"pointer"}} className="company-card flex-row" >
+    <Card onClick={() => navigate(`/companies/${handle}`)} style={{cursor:"pointer"}} className="company-card flex-row">
       <CardBody className="col-10">
         <div className="h-100 d-flex flex-column justify-content-between">
           <div>
