@@ -15,7 +15,9 @@ import {
 
 function NavBar() {
   const args = {
-    color: 'light',
+    color: 'dark',
+    light: false,
+    dark: true,
     expand: "md",
     fixed: "top",
     toggle: "true",
