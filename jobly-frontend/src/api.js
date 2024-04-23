@@ -51,7 +51,10 @@ export class JoblyApi {
     return res.companies;
   }
 
-  // obviously, you'll add a lot here ...
+  static async searchCompanies(company) {
+    let res = await this.request("companies", {"name":company});
+    return res.companies;
+  }
 }
 
 // for now, put token ("testuser" / "password" on class)
