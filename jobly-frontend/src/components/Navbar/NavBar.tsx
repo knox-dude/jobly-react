@@ -11,10 +11,9 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText,
 } from 'reactstrap';
 
-function Example() {
+function NavBar() {
   const args = {
     color: 'light',
     expand: "md",
@@ -72,11 +71,10 @@ function Example() {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
         </Collapse>
       </Navbar>
     </div>
   );
 }
 
-export default Example;
+export default NavBar;
