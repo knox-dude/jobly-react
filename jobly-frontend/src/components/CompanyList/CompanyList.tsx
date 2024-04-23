@@ -27,7 +27,7 @@ function CompanyList() {
   };
 
   return (
-    <div className="company-list">
+    <div className="company-list container pt-1">
       {renderCompanies()}
     </div>
   )
