@@ -20,30 +20,35 @@ function SignupForm() {
     navigate("/colors");
   }
 
+  // TODO: spruce up design a bit, make it so that users can't click confirm without all fields filled in,
+  // probably have to do error handling and stuff
+
   return (
-    < Form onSubmit={handleSubmit}>
-      <FormGroup>
-        <Label for="username">Username</Label>
-        <Input type="text" name="username" id="username" />
-      </FormGroup>
-      <FormGroup>
-        <Label for="firstName">First Name</Label>
-        <Input type="text" name="firstName" id="firstName" />
-      </FormGroup>
-      <FormGroup>
-        <Label for="lastName">Last Name</Label>
-        <Input type="text" name="lastName" id="lastName" />
-      </FormGroup>
-      <FormGroup>
-        <Label for="password">Password</Label>
-        <Input type="password" name="password" id="password" />
-      </FormGroup>
-      <FormGroup>
-        <Label for="email">Email</Label>
-        <Input type="email" name="email" id="email" />
-      </FormGroup>
-      <Button type="submit">Sign Up</Button>
-    </Form>
+    <div className="container">
+      < Form onSubmit={handleSubmit}>
+        <FormGroup>
+          <Label for="username">Username</Label>
+          <Input type="text" name="username" id="username" autoComplete="username" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="firstName">First Name</Label>
+          <Input type="text" name="firstName" id="firstName" autoComplete="given-name"/>
+        </FormGroup>
+        <FormGroup>
+          <Label for="lastName">Last Name</Label>
+          <Input type="text" name="lastName" id="lastName" autoComplete="family-name"/>
+        </FormGroup>
+        <FormGroup>
+          <Label for="password">Password</Label>
+          <Input type="password" name="password" id="password" autoComplete="new-password"/>
+        </FormGroup>
+        <FormGroup>
+          <Label for="email">Email</Label>
+          <Input type="email" name="email" id="email" autoComplete="email"/>
+        </FormGroup>
+        <Button type="submit">Sign Up</Button>
+      </Form>
+    </div>
   );
 }
 

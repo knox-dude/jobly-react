@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Placeholder from "@/components/Placeholder/Placeholder";
+import SignupForm from "../SignupForm/SignupForm";
 import CompanyList from "@/components/CompanyList/CompanyList";
 import CompanyDetail from "@/components/CompanyDetail/CompanyDetail";
 import JobList from "../JobList/JobList";
@@ -14,7 +15,7 @@ function AppRoutes() {
       <Route path="/jobs" element={<JobList />} />
       <Route path="/jobs/:id" element={<JobDetail />} />
       <Route path="/login" element={<Placeholder />} />
-      <Route path="/signup" element={<Placeholder />} />
+      <Route path="/signup" element={<SignupForm />} />
       <Route path="/profile" element={<Placeholder />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
