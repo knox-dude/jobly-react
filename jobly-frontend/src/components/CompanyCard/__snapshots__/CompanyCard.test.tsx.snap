@@ -3,7 +3,7 @@
 exports[`CompanyCard passes the snapshot test 1`] = `
 <DocumentFragment>
   <div
-    class="company-card flex-row card"
+    class="company-card flex-row m-2 card"
     style="cursor: pointer;"
   >
     <div
