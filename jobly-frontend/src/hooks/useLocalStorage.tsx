@@ -22,7 +22,6 @@ function useLocalStorage<T>(key: string, initialValue: T): [LocalStorageValue<T>
     try {
       // Allow value to be a function to mimic useState
       const valueToStore = value instanceof Function ? value(storedValue) : value;
-      // Save state
       setStoredValue(valueToStore);
       // Save to local storage
       localStorage.setItem(key, JSON.stringify(valueToStore));
