@@ -6,8 +6,10 @@ import CompanyList from "@/components/CompanyList/CompanyList";
 import CompanyDetail from "@/components/CompanyDetail/CompanyDetail";
 import JobList from "../JobList/JobList";
 import JobDetail from "../JobDetail/JobDetail";
+import Logout from "../Logout/Logout";
 
 function AppRoutes() {
+
   return (
     <Routes>
       <Route path="/" element={<Placeholder />} />
@@ -18,6 +20,7 @@ function AppRoutes() {
       <Route path="/login" element={<LoginForm />} />
       <Route path="/signup" element={<SignupForm />} />
       <Route path="/profile" element={<Placeholder />} />
+      <Route path="/logout" element={<Logout />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

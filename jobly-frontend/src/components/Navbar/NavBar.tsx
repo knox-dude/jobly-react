@@ -48,7 +48,7 @@ function NavBar() {
         <>
           <NavItem>
             <NavLink tag={Link} to="/profile">
-              Profile
+              {username}
             </NavLink>
           </NavItem>
           <NavItem>
