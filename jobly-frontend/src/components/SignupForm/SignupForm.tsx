@@ -6,6 +6,7 @@ function SignupForm() {
 
   const navigate = useNavigate();
 
+  // get all fields and submit them to get a token - then set it in local storage
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const username = (event.target as HTMLFormElement).username.value;
