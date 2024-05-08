@@ -16,9 +16,9 @@ type decodedToken = {iat: number, isAdmin: boolean, username: string}
 
 function NavBar() {
   const args = {
-    color: "dark",
-    light: false,
-    dark: true,
+    color: "light",
+    light: true,
+    dark: false,
     expand: "md",
     fixed: "top",
     toggle: "true",
@@ -82,7 +82,7 @@ function NavBar() {
         <NavbarBrand href="/">jobly</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar onClick={() => setIsOpen(false)}>
-          <Nav className="me-auto" navbar>
+          <Nav className="ms-auto" navbar>
             <NavItem>
               <NavLink tag={Link} to="/companies/">
                 Companies
