@@ -2,7 +2,7 @@ import { Company, Job, User } from "@/types";
 
 declare module "@/api" {
   class JoblyApi {
-    static token: string;
+    static token: string | null;
 
     static async getCompanies(): Promise<Company[]>;
     static async getCompany(handle: string): Promise<Company>;
