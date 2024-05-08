@@ -7,12 +7,13 @@ import CompanyDetail from "@/components/CompanyDetail/CompanyDetail";
 import JobList from "../JobList/JobList";
 import JobDetail from "../JobDetail/JobDetail";
 import Logout from "../Logout/Logout";
+import Homepage from "../Homepage/Homepage";
 
 function AppRoutes() {
 
   return (
     <Routes>
-      <Route path="/" element={<Placeholder />} />
+      <Route path="/" element={<Homepage />} />
       <Route path="/companies" element={<CompanyList />} />
       <Route path="/companies/:handle" element={<CompanyDetail />} />
       <Route path="/jobs" element={<JobList />} />
