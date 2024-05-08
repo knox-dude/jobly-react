@@ -10,6 +10,7 @@ function Logout() {
 
   useEffect(() => {
     async function logoutUser() {
+      console.log('set token to null');
       setToken(null);
       await JoblyApi.logout();
       navigate("/");
