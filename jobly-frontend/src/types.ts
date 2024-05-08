@@ -16,3 +16,12 @@ export interface Job {
   companyName?: string;
   company?: Company;
 }
+
+export interface User {
+  username: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  isAdmin: boolean;
+  applications: Job[];
+}
