@@ -1,21 +1,16 @@
-import TokenContext from "../TokenContext/TokenContext"
 import { useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import { Spinner } from "reactstrap";
-import { JoblyApi } from "@/api";
+import CurrUserContext from "../CurrUserContext/CurrUserContext";
 
 function Logout() {
   const navigate = useNavigate();
-  const [, setToken] = useContext(TokenContext);
+  const [,logout,,] = useContext(CurrUserContext);
 
   useEffect(() => {
-    async function logoutUser() {
-      console.log('set token to null');
-      setToken(null);
-      await JoblyApi.logout();
-      navigate("/");
-    }
-    logoutUser();
+    console.log('logging out...');
+    logout();
+    navigate("/");
   });
 
   return (

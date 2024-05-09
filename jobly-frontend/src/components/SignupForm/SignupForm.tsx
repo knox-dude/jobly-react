@@ -1,13 +1,12 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { JoblyApi } from "@/api";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
-import TokenContext from "../TokenContext/TokenContext";
+import CurrUserContext from "../CurrUserContext/CurrUserContext";
 
 function SignupForm() {
   const navigate = useNavigate();
-  // dont need token just need setToken so don't define it here
-  const [, setToken] = useContext(TokenContext);
+  // get signup, ignore user, logout, login
+  const [,,,signup] = useContext(CurrUserContext);
 
   // get all fields and submit them to get a token - then set it in local storage
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -20,26 +19,14 @@ function SignupForm() {
 
     try {
       if (!username || !firstName || !lastName || !password || !email) {
-        throw new Error("Please fill in all fields");
+        alert('Please fill in all fields');
+        throw new Error("not all fields filled in");
       }
-      // signup using JoblyApi, then set it in local storage with setToken context hook
-      const newToken = await JoblyApi.signup({
-        username,
-        firstName,
-        lastName,
-        password,
-        email,
-      });
-      // set token via contextProvider if it exists
-      newToken
-        ? setToken(newToken)
-        : console.error("signup token something went wrong");
+      await signup({username, firstName, lastName, password, email});
     } catch (error) {
-      console.error(error);
+      console.error(`error in signup: ${error}`);
       navigate("/signup");
     }
-
-    navigate("/");
   };
 
   return (

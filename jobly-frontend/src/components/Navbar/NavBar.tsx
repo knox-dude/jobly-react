@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import {
   Collapse,
   Navbar,
@@ -9,10 +9,7 @@ import {
   NavLink
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import TokenContext from "../TokenContext/TokenContext";
-import {jwtDecode} from "jwt-decode"
-
-type decodedToken = {iat: number, isAdmin: boolean, username: string}
+import CurrUserContext from "../CurrUserContext/CurrUserContext";
 
 function NavBar() {
   const args = {
@@ -27,28 +24,17 @@ function NavBar() {
   // state for toggling of navigation bar
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggle = () => setIsOpen(!isOpen);
-  const [username, setUsername] = useState<string | null>(null);
 
-  // get token from context provider
-  const [token,] = useContext(TokenContext);
-
-  // decode token and set username if token exists
-  useEffect(() => {
-    if (token) {
-      // get username from decoded token and set it
-      setUsername(jwtDecode<decodedToken>(token).username);
-    } else {
-      console.log("no token");
-    }
-  }, [username, token])
+  // get curent user from context (ignore logout, login, signup)
+  const [user,,,] = useContext(CurrUserContext);
 
   const renderNavBasedOnToken = () => {
-    if (token) {
+    if (user) {
       return (
         <>
           <NavItem>
             <NavLink tag={Link} to="/profile">
-              {username}
+              {user.username}
             </NavLink>
           </NavItem>
           <NavItem>
