@@ -1,4 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import { useContext } from "react";
+import CurrUserContext from "../CurrUserContext/CurrUserContext";
 import Placeholder from "@/components/Placeholder/Placeholder";
 import SignupForm from "../SignupForm/SignupForm";
 import LoginForm from "../LoginForm/LoginForm";
@@ -11,17 +13,35 @@ import Homepage from "../Homepage/Homepage";
 
 function AppRoutes() {
 
+  const [user,,,] = useContext(CurrUserContext);
+
+  const renderRoutesByAuthentication = () => {
+    if (user) {
+      return (
+        <>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/companies" element={<CompanyList />} />
+          <Route path="/companies/:handle" element={<CompanyDetail />} />
+          <Route path="/jobs" element={<JobList />} />
+          <Route path="/jobs/:id" element={<JobDetail />} />
+          <Route path="/profile" element={<Placeholder />} />
+          <Route path="/logout" element={<Logout />} />        
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/signup" element={<SignupForm />} />
+        </>
+      )
+    }
+  }
+
   return (
     <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/companies" element={<CompanyList />} />
-      <Route path="/companies/:handle" element={<CompanyDetail />} />
-      <Route path="/jobs" element={<JobList />} />
-      <Route path="/jobs/:id" element={<JobDetail />} />
-      <Route path="/login" element={<LoginForm />} />
-      <Route path="/signup" element={<SignupForm />} />
-      <Route path="/profile" element={<Placeholder />} />
-      <Route path="/logout" element={<Logout />} />
+      {renderRoutesByAuthentication()}
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

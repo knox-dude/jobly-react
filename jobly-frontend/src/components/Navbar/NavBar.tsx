@@ -33,6 +33,16 @@ function NavBar() {
       return (
         <>
           <NavItem>
+            <NavLink tag={Link} to="/companies/">
+              Companies
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={Link} to="/jobs">
+              Jobs
+            </NavLink>
+          </NavItem>
+          <NavItem>
             <NavLink tag={Link} to="/profile">
               {user.username}
             </NavLink>
@@ -69,16 +79,6 @@ function NavBar() {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar onClick={() => setIsOpen(false)}>
           <Nav className="ms-auto" navbar>
-            <NavItem>
-              <NavLink tag={Link} to="/companies/">
-                Companies
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink tag={Link} to="/jobs">
-                Jobs
-              </NavLink>
-            </NavItem>
             {renderNavBasedOnToken()}
           </Nav>
         </Collapse>
