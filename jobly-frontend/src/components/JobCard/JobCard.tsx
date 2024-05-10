@@ -2,6 +2,7 @@ import { Card, CardBody, CardTitle, CardText } from "reactstrap"
 import { Job } from "@/types";
 import { useNavigate } from "react-router-dom";
 
+// renders a JobCard, which is displayed on CompanyDetail page and JobList page
 function JobCard({id, title, salary, equity}: Job) {
 
   const navigate = useNavigate();
