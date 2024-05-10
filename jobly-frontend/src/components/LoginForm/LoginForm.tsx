@@ -7,9 +7,9 @@ function LoginForm() {
 
   const navigate = useNavigate();
   // get login, ignore user, logout, signup
-  const [,,login,] = useContext(CurrUserContext);
+  const {login} = useContext(CurrUserContext);
 
-  // get login fields and submit them  - then set token in local storage
+  // get login fields and submit them, using function from CurrUserContext
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const username = (event.target as HTMLFormElement).username.value;
