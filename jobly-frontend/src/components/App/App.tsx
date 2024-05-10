@@ -36,7 +36,6 @@ function App() {
     async function tryToGetUser(token: string) {
       try {
         const decodedToken = jwtDecode<decodedToken>(token);
-        console.log('API call in App - useEffect, getUser');
         const foundUser = await JoblyApi.getUser(decodedToken.username);
         setUser(foundUser);
       } catch (err) {
@@ -57,7 +56,6 @@ function App() {
   // login function, passed down through CurrUserContext
   const login = async ({ username, password }: LoginParams) => {
     try {
-      console.log('API call in login in App');
       const newToken = await JoblyApi.login({username, password});
       setToken(newToken);
     } catch (err) {
@@ -69,7 +67,6 @@ function App() {
   // signup function, passed down through CurrUserContext
   const signup = async ({username, firstName, lastName, password, email}: SignupParams) => {
     try {
-      console.log('API call in signup in App');
       const newToken = await JoblyApi.signup({username, firstName, lastName, password, email});
       setToken(newToken);
     } catch (err) {
@@ -83,7 +80,6 @@ function App() {
   const editProfile = async ({...userData}: UserProfileData) => {
     if (user) {
       try {
-        console.log('API call in editProfile in App');
         const newUser = await JoblyApi.updateUser(user.username, userData);
         setUser(newUser);
       } catch (err) {
