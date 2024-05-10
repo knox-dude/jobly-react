@@ -83,12 +83,17 @@ export class JoblyApi {
     return res.token;
   }
 
-  static async logout() {
+  static logout() {
     JoblyApi.token = null;
   }
 
   static async getUser(username) {
     let res = await this.request(`users/${username}`);
+    return res.user;
+  }
+
+  static async updateUser(username, data) {
+    let res = await this.request(`users/${username}`, data, "patch");
     return res.user;
   }
 }
