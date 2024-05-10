@@ -26,7 +26,7 @@ function NavBar() {
   const toggle = () => setIsOpen(!isOpen);
 
   // get curent user from context (ignore logout, login, signup)
-  const [user,,,] = useContext(CurrUserContext);
+  const {user} = useContext(CurrUserContext);
 
   const renderNavBasedOnToken = () => {
     if (user) {
