@@ -17,7 +17,7 @@ declare module "@/api" {
     static async searchCompanies(company: string | undefined): Promise<Company[]>;
     static async getJobs(): Promise<Job[]>;
     static async getJob(id: string): Promise<Job>;
-    static async searchJobs(title: string): Promise<Job[]>;
+    static async searchJobs(title: string | undefined): Promise<Job[]>;
     static async signup({username: string, firstName: string, lastName: string, password: string, email: string}): Promise<string | null>;
     static async login({username: string, password: string}): Promise<string | null>;
     static logout(); // no request calls or db calls, so not async
