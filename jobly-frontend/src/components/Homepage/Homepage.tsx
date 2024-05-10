@@ -10,7 +10,7 @@ function Homepage() {
   const navigate = useNavigate();
 
   // get user from context provider
-  const [user,,,] = useContext(CurrUserContext);
+  const {user} = useContext(CurrUserContext);
 
   const renderBasedOnUser = () => {
     if (user) {
