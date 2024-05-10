@@ -5,10 +5,9 @@ import CurrUserContext from "../CurrUserContext/CurrUserContext";
 
 function Logout() {
   const navigate = useNavigate();
-  const [,logout,,] = useContext(CurrUserContext);
+  const {logout} = useContext(CurrUserContext);
 
   useEffect(() => {
-    console.log('logging out...');
     logout();
     navigate("/");
   });
