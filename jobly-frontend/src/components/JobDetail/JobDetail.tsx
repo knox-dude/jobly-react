@@ -5,12 +5,14 @@ import { JoblyApi } from "@/api";
 import CompanyCard from "@/components/CompanyCard/CompanyCard";
 import { Spinner } from "reactstrap";
 
+// JobDetail component, found by clicking on JobCard component
 function JobDetail() {
 
   const params = useParams();
   const id = params.id;
 
-  if (!id) {
+  // need this because typescript thinks id could be undefined, component won't work if we don't have this
+  if (!id) { 
     throw new Error("Invalid id - shoudln't reach here");
   }
 
