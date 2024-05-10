@@ -16,10 +16,11 @@ function CompanyDetail() {
 
   const [company, setCompany] = useState<Company>();
 
-  // get job info on this company and set jobs and company state
+  // get job info on this company and set company state
   useEffect(() => {
     const fetchCompany = async () => {
       try {
+        console.log('API call in CompanyDetail - useEffect');
         const response = await JoblyApi.getCompany(handle);
         setCompany(response);
       } catch (error) {
