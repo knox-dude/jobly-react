@@ -6,9 +6,9 @@ import CurrUserContext from "../CurrUserContext/CurrUserContext";
 function SignupForm() {
   const navigate = useNavigate();
   // get signup, ignore user, logout, login
-  const [,,,signup] = useContext(CurrUserContext);
+  const {signup} = useContext(CurrUserContext);
 
-  // get all fields and submit them to get a token - then set it in local storage
+  // get all fields and submit them to function received from CurrUserContext in App
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const username = (event.target as HTMLFormElement).username.value;
