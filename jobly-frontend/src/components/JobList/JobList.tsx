@@ -4,6 +4,7 @@ import { Job } from "@/types";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import JobCard from "../JobCard/JobCard";
 
+// renders list of jobs on /jobs page
 function JobList() {
   const [jobs, setJobs] = useState<Job[]>([]);
 
@@ -21,14 +22,10 @@ function JobList() {
   }, []);
 
   // handle when user searches for a job
-  const handleSearch = async (searchText: string) => {
+  const handleSearch = async (searchText: string | undefined) => {
     try {
-      let response;
-      if (searchText === "") {
-        response = await JoblyApi.getJobs();
-      } else {
-        response = await JoblyApi.searchJobs(searchText);
-      }
+      searchText = searchText || undefined;
+      const response = await JoblyApi.searchJobs(searchText);
       setJobs(response);
     } catch (error) {
       console.error("Error searching jobs:", error);
