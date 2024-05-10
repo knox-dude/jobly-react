@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useContext } from "react";
 import CurrUserContext from "../CurrUserContext/CurrUserContext";
-import Placeholder from "@/components/Placeholder/Placeholder";
 import SignupForm from "../SignupForm/SignupForm";
 import LoginForm from "../LoginForm/LoginForm";
 import CompanyList from "@/components/CompanyList/CompanyList";
@@ -10,10 +9,11 @@ import JobList from "../JobList/JobList";
 import JobDetail from "../JobDetail/JobDetail";
 import Logout from "../Logout/Logout";
 import Homepage from "../Homepage/Homepage";
+import ProfileForm from "../ProfileForm/ProfileForm";
 
 function AppRoutes() {
 
-  const [user,,,] = useContext(CurrUserContext);
+  const {user} = useContext(CurrUserContext);
 
   const renderRoutesByAuthentication = () => {
     if (user) {
@@ -24,7 +24,7 @@ function AppRoutes() {
           <Route path="/companies/:handle" element={<CompanyDetail />} />
           <Route path="/jobs" element={<JobList />} />
           <Route path="/jobs/:id" element={<JobDetail />} />
-          <Route path="/profile" element={<Placeholder />} />
+          <Route path="/profile" element={<ProfileForm />} />
           <Route path="/logout" element={<Logout />} />        
         </>
       );
