@@ -16,13 +16,12 @@ type SignupParams = {
   password: string;
   email: string;
 };
-type UserProfileData = {
+type UserProfileData = Partial<{
   firstName: string | null;
   lastName: string | null;
   password: string | null;
   email: string | null;
-  isAdmin: boolean | null;
-}
+}>;
 type decodedToken = {iat: number, username:string, isAdmin:string};
 
 function App() {
@@ -30,6 +29,8 @@ function App() {
   // retrieves token, setToken from local storage
   const [token, setToken] = useLocalStorage<string | null>('jobly_token', null);
   const [user, setUser] = useState<User | null>(null);
+  // need this to ensure the routes only load after the user has been fetched
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     // whenever token changes, try to get the current user
@@ -41,10 +42,17 @@ function App() {
       } catch (err) {
         console.error(`problem getting user: ${err}`);
         setUser(null);
+      } finally {
+        setLoading(false);
       }
     }
-    (token) ? tryToGetUser(token) : setUser(null);
-
+    JoblyApi.token = token;
+    if (token) {
+      tryToGetUser(token);
+    } else {
+      setUser(null);
+      setLoading(false);
+    }
   }, [token]);
 
   // logout function, passed down through CurrUserContext
@@ -91,6 +99,9 @@ function App() {
     }
   }
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="app">
