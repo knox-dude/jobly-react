@@ -8,7 +8,7 @@ export interface Company {
 }
 
 export interface Job {
-  id: number;
+  id: string;
   title: string;
   salary?: number;
   equity?: number;
@@ -23,5 +23,5 @@ export interface User {
   lastName: string;
   email: string;
   isAdmin: boolean;
-  applications: Job[];
+  applications: string[];
 }
