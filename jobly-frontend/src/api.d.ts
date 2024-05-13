@@ -23,5 +23,6 @@ declare module "@/api" {
     static logout(); // no request calls or db calls, so not async
     static async getUser(username: string): Promise<User>;
     static async updateUser(username:string, data:UserProfileData): Promise<User>;
+    static async applyToJob(username:string, jobId:string): Promise<string>;
   }
 }
